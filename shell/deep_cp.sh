@@ -41,7 +41,7 @@ function CpFtoDpath() {
 	return 0
 }
 
-function IsFile() {
+function Deep_Copy() {
 	FULLPATH=$1	
 	ORIGINAL_SPATH=$2
 	ORIGINAL_DPATH=$3
@@ -57,7 +57,7 @@ function IsFile() {
 		if [ "directory" == $fileType ]; then
 			#printf "%s is %s!\n" $FULLPATH/$fName $fileType
 			CpDtoDpath "$FULLPATH/$fName" "$dpath"
-			IsFile "$FULLPATH/$fName" "$ORIGINAL_SPATH" "$ORIGINAL_DPATH"
+			Deep_Copy "$FULLPATH/$fName" "$ORIGINAL_SPATH" "$ORIGINAL_DPATH"
 		else
 			#printf "%s is file, is %s #########\n" $FULLPATH/$fName $fileType
 			CpFtoDpath "$FULLPATH/$fName" "$dpath"
@@ -87,7 +87,7 @@ function CreateRelativePathname() {
 }
 
 
-IsFile "$ORIGINAL_SPATH" "$ORIGINAL_SPATH" "$ORIGINAL_DPATH"
+Deep_Copy "$ORIGINAL_SPATH" "$ORIGINAL_SPATH" "$ORIGINAL_DPATH"
 
 
 
