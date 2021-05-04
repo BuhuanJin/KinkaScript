@@ -22,6 +22,7 @@ function CpDtoDpath() {
 	dpath=$2
 	if IsExistedDfilename "$dpath"; then
 		echo "this directory is exited $dpath, no copy override!"
+		#rm $dpath -f			# uninstall it
 	else 
 		echo "cp $spath to $dpath"
 		cp -r $spath $dpath
